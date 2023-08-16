@@ -8,9 +8,10 @@ import { AlertController, ToastController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  nombreUsuario: string = "Victor";
-  edad: number = 25;
+  nombreUsuario: string = "";
+  edad: number = 0;
   user1: string = "";
+  contrasena: string = "";
   //apellido = "Ortega";
   personas: any = [
     {
@@ -21,6 +22,15 @@ export class HomePage {
   ] 
 
   constructor(private router: Router, private alertController: AlertController, private toastController: ToastController) {}
+
+  validatePasswordInput(event: any) {
+    const pattern = /^[0-9]*$/;
+    const inputChar = String.fromCharCode(event.charCode);
+
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -44,14 +54,20 @@ export class HomePage {
   }
 
   irPag1(){
-    let navigationsExtras: NavigationExtras = {
-      state: {
-        nombreEnviado: this.user1,
-        edadEnviada: this.edad
+    if(this.user1.trim() || this.contrasena.trim() ){
+      this.presentAlert('Complete los campos');
+    } else if (this.user1.trim().length < 3  || this.contrasena.length < 4 ) {
+      this.presentAlert('Usuario o contraseña no validos!');
+    } else {
+      let navigationsExtras: NavigationExtras = {
+        state: {
+          nombreEnviado: this.user1,
+          edadEnviada: this.edad
+        }
       }
+      this.presentToast('top');
+      this.router.navigate(['/pagina1'], navigationsExtras);
     }
-    this.presentToast('top');
-    this.router.navigate(['/pagina1'], navigationsExtras);
   }
 
   sumar(){
@@ -59,5 +75,7 @@ export class HomePage {
     this.nombreUsuario;
   
   }
+
+
 
 }
