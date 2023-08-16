@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Inicio Sesión
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col><ion-input label="Usuario:" type="text" [(ngModel)]="user1" placeholder="{{nombreUsuario}}"></ion-input></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col><ion-input label="Contraseña" type="password" placeholder="Su contraseña"></ion-input></ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col> <ion-button type="block" (click)="irPag1()" >Inicie Sesión {{user1}}</ion-button></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>
