@@ -13,12 +13,12 @@
 <ion-content [fullscreen]="true">
 
   <ion-grid>
-    <ion-row>
-      <ion-col><ion-input label="Usuario:" labelPlacement="stacked" type="text" [(ngModel)]="user1" placeholder="{{nombreUsuario}}" minlength="3" maxlength="8" [counter]="true"></ion-input></ion-col>
+    <ion-row *ngIf="edad > 10">
+      <ion-col><ion-input label="Nombre:" labelPlacement="stacked" type="text" [(ngModel)]="user1" placeholder="{{nombreUsuario}}" minlength="3" maxlength="8" [counter]="true"></ion-input></ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col><ion-input label="Contraseña" labelPlacement="stacked" type="password" (keypress)="validatePasswordInput($event)" placeholder="Su contraseña" minlength="4" maxlength="4" [counter]="true"></ion-input></ion-col>
+      <ion-col><ion-input label="Contraseña" labelPlacement="stacked" type="password" [(ngModel)]="contrasena" (keypress)="validatePasswordInput($event)" placeholder="Su contraseña" minlength="4" maxlength="4" [counter]="true"></ion-input></ion-col>
     </ion-row>
 
     <ion-row>
@@ -27,5 +27,7 @@
       <ion-col></ion-col>
     </ion-row>
   </ion-grid>
+
+  <app-componente1 nombre="KasKas" contra=""></app-componente1>
   
 </ion-content>

@@ -8,11 +8,12 @@ import { AlertController, ToastController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  msj: string = "Si ves esto, la alerta no cambio"
   nombreUsuario: string = "";
-  edad: number = 0;
+  edad: number = 25;
   user1: string = "";
   contrasena: string = "";
-  //apellido = "Ortega";
+  apellido = "";
   personas: any = [
     {
       nombre: "Kasandra",
@@ -32,11 +33,11 @@ export class HomePage {
     }
   }
 
-  async presentAlert() {
+  async presentAlert(mensaje: string) {
     const alert = await this.alertController.create({
       header: 'Alerta',
       subHeader: 'Mensaje Importante',
-      message: '¡Esto es una alerta PAPU!',
+      message: mensaje,
       buttons: ['Confirmar'],
     });
 
@@ -54,15 +55,14 @@ export class HomePage {
   }
 
   irPag1(){
-    if(this.user1.trim() || this.contrasena.trim() ){
+    if(this.user1.trim() === '' || this.contrasena.trim() === '' ){
       this.presentAlert('Complete los campos');
     } else if (this.user1.trim().length < 3  || this.contrasena.length < 4 ) {
       this.presentAlert('Usuario o contraseña no validos!');
     } else {
       let navigationsExtras: NavigationExtras = {
         state: {
-          nombreEnviado: this.user1,
-          edadEnviada: this.edad
+          nombreEnviado: this.user1
         }
       }
       this.presentToast('top');
