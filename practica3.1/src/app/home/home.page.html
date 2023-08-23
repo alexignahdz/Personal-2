@@ -26,8 +26,32 @@
       <ion-col> <ion-button type="block" (click)="irPag1()" >Inicie Sesión {{user1}}</ion-button></ion-col>
       <ion-col></ion-col>
     </ion-row>
+
+    <mat-slide-toggle></mat-slide-toggle>
   </ion-grid>
 
-  <app-componente1 nombre="KasKas" contra=""></app-componente1>
+  <app-componente1 nombre="Cuando_t3_pasa" contra=""></app-componente1>
+  
+  <ion-grid>
+    <ion-row *ngFor="let k of personas">
+      <ion-label> Nombre: {{k.nombre | uppercase}} <br>
+        Edad: {{k.edad}} <br>
+        Fecha de nacimiento: {{k.fecha | date:'dd MMMM yyyy'}}
+      </ion-label>
+    </ion-row>
+    
+  </ion-grid>
+
+  <ion-grid>
+    <div class="contenedor">
+      <div class="track">
+        <ion-card id="card" button="true">
+          <ion-card-content>Card</ion-card-content>
+        </ion-card>
+      </div>
+    
+      <p>Muevelo muevelo.</p>
+    </div>
+  </ion-grid>
   
 </ion-content>
