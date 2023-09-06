@@ -23,20 +23,22 @@ export class HomePage {
   private readonly MAX_TRANSLATE = 344 - 100 - 32;
 
   msj: string = "Si ves esto, la alerta no cambio"
-  nombreUsuario: string = "";
+  nombreUsuario: string = "Papu";
   edad: number = 25;
   user1: string = "";
   contrasena: string = "";
   apellido = "";
   personas: any = [
     {
-      nombre: "Kasandra",
+      nombre: "K palabra",
       edad: 19,
       fecha: "12/30/2003"
     }
   ] 
 
-  constructor(private router: Router, private alertController: AlertController, private toastController: ToastController, private animationCtrl: AnimationController, private gestureCtrl: GestureController) {}
+  constructor(private router: Router, private alertController: AlertController, private toastController: ToastController, private animationCtrl: AnimationController, private gestureCtrl: GestureController) {
+    localStorage.setItem('token',this.nombreUsuario)
+  }
 
 
   private onMove(ev: GestureDetail) {

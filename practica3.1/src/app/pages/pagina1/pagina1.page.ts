@@ -10,6 +10,7 @@ export class Pagina1Page implements OnInit {
 
   nombre: string = "";
   edadR: number = 0;
+  variableStorage: any = "";
 
   constructor(private router: Router, private activedRouter: ActivatedRoute) { 
       this.activedRouter.queryParams.subscribe(param => {
@@ -21,6 +22,7 @@ export class Pagina1Page implements OnInit {
   }
 
   ngOnInit() {
+    this.variableStorage = localStorage.getItem('token')
   }
 
 }
